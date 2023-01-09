@@ -48,7 +48,7 @@ function displayBooks() {
   }
 }
 displayBooks();
-//Target the submit button to add data to local storage.
+// Target the submit button to add data to local storage.
 formData.addEventListener('submit', addBook);
 function removeBook(index) {
   if (localStorage.getItem('Books')) {
@@ -65,4 +65,3 @@ data.querySelectorAll('.remove-btn').forEach((btn, index) => {
     btn.parentElement.remove();
   });
 });
-
