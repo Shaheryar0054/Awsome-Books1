@@ -40,7 +40,6 @@ function displayBooks() {
           <p class="author">${book.title}</p>
          <button class="remove-btn">Remove</button>
          <hr>
-          
         </div>
       `;
       data.innerHTML += booksHtml;
