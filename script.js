@@ -48,3 +48,21 @@ function displayBooks() {
   }
 }
 displayBooks();
+//Target the submit button to add data to local storage.
+formData.addEventListener('submit', addBook);
+function removeBook(index) {
+  if (localStorage.getItem('Books')) {
+    const books = JSON.parse(localStorage.getItem('Books'));
+    books.splice(index, 1);
+    localStorage.clear();
+    localStorage.setItem('Books', JSON.stringify(books));
+  }
+}
+// Target the remove button and remove data from local storage as well as on screen
+data.querySelectorAll('.remove-btn').forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    removeBook(index);
+    btn.parentElement.remove();
+  });
+});
+
