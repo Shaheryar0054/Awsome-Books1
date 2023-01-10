@@ -1,16 +1,6 @@
 
 <a name="readme-top"></a>
 
-<div align="center">
-  
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
-  <h3><b>Microverse README Template</b></h3>
-
-</div>
-
-
 # 📗 Table of Contents
 
 - [📖 About the Project](#In this project we build simple Book list application that can add and remove the Books)
@@ -31,11 +21,11 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 [Awesome-Book] <a name="about-project"></a>
 
 > Describe your project in 1 or 2 sentences.
 
-**[your_project__name]** In this project we build simple application that have ability to add and remove books
+**[Awesome-Book]** In this project we build simple application that have ability to add and remove books
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -158,7 +148,7 @@ If you like this project please give me star rating
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./License) licensed.
 
 _NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
 
