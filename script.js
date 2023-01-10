@@ -1,66 +1,31 @@
-const formData = document.querySelector('.form');
-const data = document.querySelector('.data');
-
-function addNewBookData() {
-  const bookTitle = formData.title.value;
-  const bookAuthor = formData.author.value;
-
-  const book = {
-    title: bookTitle,
-    author: bookAuthor,
-  };
-
-  return book;
+// checking if local storage is empty than add an empty array
+if (localStorage.getItem('Added Books') === null) {
+  localStorage.setItem('Added Books', JSON.stringify([]));
 }
-// store Books data in Local storage
-function storeBooks(book) {
-  let books = [];
+// store data into local storage
+const storeData = JSON.parse(localStorage.getItem('Added Books'));
 
-  if (localStorage.getItem('Books')) {
-    books = JSON.parse(localStorage.getItem('Books'));
+function updateData() {
+  localStorage.setItem('Added Books', JSON.stringify(storeData));
+}
+
+function createBooks(arr) {
+  let books = '';
+  for (let i = 0; i < arr.length; i += 1) {
+    books += `
+            <p>${arr[i].title}</p>
+            <p>${arr[i].author}</p>
+            <button onclick="removeBook(${i})">Remove</button>
+            <hr/>
+            `;
   }
-
-  books.push(book);
-  localStorage.setItem('Books', JSON.stringify(books));
+  return books;
 }
-// Adding Books data or retrieving data from local storage
-function addBook(element) {
-  element.preventDefault();
-  storeBooks(addNewBookData());
-  formData.submit();
-}
-// Displaying Books Data on the users Screen
+// Diplaying data to the UI from local storage
 function displayBooks() {
-  if (localStorage.getItem('Books')) {
-    const books = JSON.parse(localStorage.getItem('Books'));
-    books.forEach((book) => {
-      const booksHtml = `
-        <div class="book-info">
-          <p class="title">${book.author}</p>
-          <p class="author">${book.title}</p>
-         <button class="remove-btn">Remove</button>
-         <hr>
-        </div>
-      `;
-      data.innerHTML += booksHtml;
-    });
-  }
+  const listOfBooks = document.querySelector('.container');
+  listOfBooks.innerHTML = `
+              <ul class="book-ul"/>
+              ${createBooks(storeData)}</ul>
+          `;
 }
-displayBooks();
-// Target the submit button to add data to local storage.
-formData.addEventListener('submit', addBook);
-function removeBook(index) {
-  if (localStorage.getItem('Books')) {
-    const books = JSON.parse(localStorage.getItem('Books'));
-    books.splice(index, 1);
-    localStorage.clear();
-    localStorage.setItem('Books', JSON.stringify(books));
-  }
-}
-// Target the remove button and remove data from local storage as well as on screen
-data.querySelectorAll('.remove-btn').forEach((btn, index) => {
-  btn.addEventListener('click', () => {
-    removeBook(index);
-    btn.parentElement.remove();
-  });
-});
