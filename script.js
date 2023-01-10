@@ -29,3 +29,32 @@ function displayBooks() {
               ${createBooks(storeData)}</ul>
           `;
 }
+
+// Adding new data in the local storage
+function addNewdata(bookTitle, bookAuthor) {
+  const Book = {
+    title: bookTitle,
+    author: bookAuthor,
+  };
+  storeData.push(Book);
+  updateData();
+  displayBooks();
+}
+// Remove data from local storage
+function removeBook(i) {
+  storeData.splice(i, 1);
+  updateData();
+  displayBooks();
+}
+removeBook();
+
+// Getting values from input fields
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+  const title = document.querySelector('.title');
+  const author = document.querySelector('.author');
+  e.preventDefault();
+  addNewdata(title.value, author.value);
+});
+
+window.onload = displayBooks();
